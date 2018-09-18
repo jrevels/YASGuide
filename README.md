@@ -51,7 +51,7 @@ Note that lines containing only comments are not considered empty lines.
 ## Other Syntax Guidelines
 
 - Do not explicitly name type variables in method signatures when unary `<:` or `>:` would suffice.
-- Type variable bindings should always be enclosed within `{}` brackets when using `where` syntax.
+- Type variable bindings should always be enclosed within `{}` brackets when using `where` syntax, e.g. `Vector{Vector{T} where T}` is good, `Vector{Vector{T}} where {T}` is good, `Vector{Vector{T}} where T` is bad.
 - A decimal should never be the last character in numeric literals (e.g. `1.` is bad, `1.0` is good).
 - Use `in` instead of `=` when specifying `for` statement iteration variables (e.g. `for i = 1:5` is bad, `for i in 1:5` is good).
 - Where type annotations would normally default to `Any`, explicitly annotate as `Any`. This rule need not apply to argument types in method signatures.
