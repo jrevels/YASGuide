@@ -39,7 +39,7 @@ Note that lines containing only comments are not considered empty lines.
 - Use a single space after commas and semicolons.
 - Do not use extra spaces for unary operators, parentheses, or brackets.
 - Use 4 spaces for indentation; no tabs, ever.
-- Never follow an empty line with another empty line/
+- Never follow an empty line with another empty line.
 - For single-line method definitions, use the form `f(args...) = ...`.
 - For method definitions spanning multiple lines, use the `function ... end` definition form.
 - The first and last lines of an indentation block should never be empty.
