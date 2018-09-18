@@ -14,6 +14,7 @@ This guide is inspired by the [JuMP Style Guide](http://www.juliaopt.org/JuMP.jl
 - All function names should be `snake_case` (all lowercase).
 - All variable names should be `snake_case` (all lowercase).
 - All constant names should be `SNAKE_CASE` (all uppercase).
+- All abstract type names should begin with `Abstract`.
 - All type variable names should be a single capital letter, preferably related to the value being typed.
 - Whole words are usually better than abbreviations or single letters.
 - Single letters can be okay when naming a mathematical entity (as opposed to a structural entity).
