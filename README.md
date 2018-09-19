@@ -17,7 +17,7 @@ This guide is inspired by the [JuMP Style Guide](http://www.juliaopt.org/JuMP.jl
 - All abstract type names should begin with `Abstract`.
 - All type variable names should be a single capital letter, preferably related to the value being typed.
 - Whole words are usually better than abbreviations or single letters.
-- Single letters can be okay when naming a mathematical entity (as opposed to a structural entity).
+- Single letters can be okay when naming a mathematical entity, i.e. an entity whose purpose or non-mathematical "meaning" is likely only known by downstream callers. For example, `a` and `b` would be appropriate names when implementing `*(a::AbstractMatrix, b::AbstractMatrix)`, since the "meaning" of those arguments (beyond their mathematical meaning as matrices, which is already described by the type) is only known by the caller.
 
 ## Comment Guidelines
 
@@ -48,6 +48,8 @@ Note that lines containing only comments are not considered empty lines.
 - If defining more than one single-line method for the same function, they may be grouped together by removing the empty line.
 - Function definitions using the `function` form should always be preceded by an empty line and followed by an empty line.
 - Try to limit line length to 80 characters per line. This rule should not be enforced arbitrarily, but is rather a soft guideline.
+- Definitions of types/structs without fields and functions without implementations ("stubs") should written in single-line form (e.g. `struct Foo <: AbstractFoo end`, `function foo end`).
+- If an argument list extends to multiple lines, align new lines to the parenthesis that started the argument list.
 
 ## Other Syntax Guidelines
 
@@ -56,10 +58,11 @@ Note that lines containing only comments are not considered empty lines.
 - A decimal should never be the last character in numeric literals (e.g. `1.` is bad, `1.0` is good).
 - Use `in` instead of `=` when specifying `for` statement iteration variables (e.g. `for i = 1:5` is bad, `for i in 1:5` is good).
 - Where type annotations would normally default to `Any`, explicitly annotate as `Any`. This rule need not apply to argument types in method signatures.
+- In argument lists, always separate positional arguments from keyword arguments using a semicolon (`;`).
 
 ## Programming Guidelines
 
-- Dispatch type constraints should be used chiefly for *dispatch*, not for artificially restricting method signatures to "known" types, or for documentation.
-- Dispatching on type parameters rather than outermost type should be avoided unless necessary.
+- Dispatch type constraints should be used chiefly for *dispatch*, not for artificially restricting method signatures to "known" types, or merely for documentation.
+- Dispatching on type parameters should be avoided unless necessary, especially if the method author does not "own" the method and/or the type being parameterized (in which case, this kind of dispatch could be an instance of "type piracy"). This is because naive dispatch on type parameters often does not (and cannot) describe values the way the programmer intends, unless the programmer explicitly accounts for invariance. For example, `AbstractArray{<:MyType}` does not describe "any value of type `<:AbstractArray` containing elements of type `<:MyType`"; it only describes a subset of such values. Likewise, `AbstractArray{>:MyType}` describes "any value of type `<:AbstractArray` that *could* contain elements of type `<:MyType`", which is likely a superset of what the programmer intended to describe (e.g. `AbstractArray{Any} <: AbstractArray{>:Number}` is `true`).
 - Always use explicit `return` statements in `function ... end` definitions.
 - If a function does not have a clearly appropriate return value, then explicitly return `nothing`.
