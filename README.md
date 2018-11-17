@@ -4,7 +4,7 @@ This guide is currently a work in progress. In the future, it should feature mor
 
 It is more strict than the [Julia Manual's Style Guide](https://docs.julialang.org/en/v1.0.2/manual/style-guide/), and diverges in some places. For stylistic concerns not addressed in this guide, the manual's guide is a good fallback.
 
-This guide is inspired by the [JuMP Style Guide](http://www.juliaopt.org/JuMP.jl/latest/style.html) and adopts a few of its guidelines.
+This guide is inspired by the [JuMP Style Guide](http://www.juliaopt.org/JuMP.jl/dev/style/) and adopts a few of its guidelines.
 
 ## Naming Guidelines
 
