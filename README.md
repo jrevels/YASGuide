@@ -49,7 +49,7 @@ Note that lines containing only comments are not considered empty lines.
 - If defining more than one single-line method for the same function, they may be grouped together without empty lines between the definitions.
 - Try to limit line length to 80 characters per line. This rule should not be enforced arbitrarily, but is rather a soft guideline.
 - Definitions of types/structs without fields and functions without implementations ("stubs") should written in single-line form (e.g. `struct Foo <: AbstractFoo end`, `function foo end`).
-- If an argument list extends to multiple lines, align new lines to the parenthesis that started the argument list.
+- If an argument list extends to multiple lines, align new lines to the parenthesis/bracket/etc. that started the argument list.
 
 ## Other Syntax Guidelines
 
