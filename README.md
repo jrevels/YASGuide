@@ -59,6 +59,7 @@ Note that lines containing only comments are not considered empty lines.
 - Use `in` instead of `=` when specifying `for` statement iteration variables (e.g. `for i = 1:5` is bad, `for i in 1:5` is good).
 - If a field type annotation in a struct definition would default to `Any`, explicitly annotate the field with `::Any`.
 - In argument lists, always separate positional arguments from keyword arguments using a semicolon (`;`).
+- In method signatures, only provide names to arguments that are actually referenced in the method body (e.g. `f(x::Number, y) = y` is bad, `f(::Number, y) = y` is good).
 
 ## Programming Guidelines
 
