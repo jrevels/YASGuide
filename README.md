@@ -36,7 +36,7 @@ This guide is inspired by the [JuMP Style Guide](http://www.juliaopt.org/JuMP.jl
 Note that lines containing only comments are not considered empty lines.
 
 - All files should have [newline](https://en.wikipedia.org/wiki/Newline) character at the end of the file.
-- Use spaces between binary operators.
+- Use spaces around binary operators (e.g. `x+y` is bad, `x + y` is good).
 - Use a single space after commas and semicolons.
 - Do not use extra spaces for unary operators, parentheses, or brackets.
 - Use 4 spaces for indentation; no tabs, ever.
