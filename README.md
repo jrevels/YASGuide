@@ -45,8 +45,8 @@ Note that lines containing only comments are not considered empty lines.
 - For method definitions spanning multiple lines, use the `function ... end` definition form.
 - The first and last lines of an indentation block should never be empty.
 - Top-level assignments or definitions should generally be separated by a single empty line.
-- If defining more than one single-line method for the same function, they may be grouped together by removing the empty line.
 - Function definitions using the `function` form should always be preceded by an empty line and followed by an empty line.
+- If defining more than one single-line method for the same function, they may be grouped together without empty lines between the definitions.
 - Try to limit line length to 80 characters per line. This rule should not be enforced arbitrarily, but is rather a soft guideline.
 - Definitions of types/structs without fields and functions without implementations ("stubs") should written in single-line form (e.g. `struct Foo <: AbstractFoo end`, `function foo end`).
 - If an argument list extends to multiple lines, align new lines to the parenthesis that started the argument list.
