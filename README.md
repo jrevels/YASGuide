@@ -68,3 +68,4 @@ Note that lines containing only comments are not considered empty lines.
 - The `return` keyword should always be omitted from return statements within short-form method definitions (`f(...) = ...`). The `return` keyword should never be omitted from return statements within any other context (`function ... end`, `macro ... end`, etc.).
 - If a function does not have a clearly appropriate return value, then explicitly return `nothing`.
 - If a function definition is not at top-level, then it should be an anonymous function rather than a named function. This lessens confusion about whether the function is properly overloadable.
+- When overloading a function from another module, the function name should be qualified with its module (e.g. `imported_function(...) = ...` is bad, `ParentModule.imported_function(...) = ...` is good).
