@@ -24,12 +24,11 @@ This guide is inspired by the [JuMP Style Guide](http://www.juliaopt.org/JuMP.jl
 - `TODO` to mark todo comments and `XXX` to mark comments about currently broken code
 - Quote code in comments using backticks (e.g. `` `variable_name` ``).
 - Use section headers to split code files into logical chunks. Section header formatting is as follows:
-
-```
-#####
-##### Section Name
-#####
-```
+    ```
+    #####
+    ##### Section Name
+    #####
+    ```
 
 ## Line/Alignment/Spacing Guidelines
 
@@ -50,6 +49,17 @@ Note that lines containing only comments are not considered empty lines.
 - Try to limit line length to 80 characters per line. This rule should not be enforced arbitrarily, but is rather a soft guideline.
 - Definitions of types/structs without fields and functions without implementations ("stubs") should written in single-line form (e.g. `struct Foo <: AbstractFoo end`, `function foo end`).
 - If an argument list extends to multiple lines, align new lines to the parenthesis/bracket/etc. that started the argument list.
+- `keyword...end` statements form "code blocks" if the delimiting terms (`keyword` and `end`) are on separate lines. The contents of such code blocks should be indented. The `end` delimiter of a code block should either be on the same line as the `keyword` delimiter, or on its own line following the code block content. In other words, this is bad:
+    ```julia
+    function f(x)
+        return g(x, 1) end
+    ```
+    while this is okay:
+    ```julia
+    function f(x)
+        return g(x, 1)
+    end
+    ```
 
 ## Other Syntax Guidelines
 
