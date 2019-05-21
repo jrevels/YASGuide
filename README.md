@@ -79,3 +79,23 @@ Note that lines containing only comments are not considered empty lines.
 - If a function does not have a clearly appropriate return value, then explicitly return `nothing`.
 - If a function definition is not at top-level, then it should be an anonymous function rather than a named function. This lessens confusion about whether the function is properly overloadable.
 - When overloading a function from another module, the function name should be qualified with its module (e.g. `imported_function(...) = ...` is bad, `ParentModule.imported_function(...) = ...` is good).
+
+## Modules
+
+### Loading
+
+Modules should only be loaded with `using`, never `import`.
+If you need just the name of a module in your namespace, use `using Module: Module`.
+`import` creates "hard" bindings, which can cause issues.
+For example, if you do `import Module: f`, `f` can be extended without qualification (as in
+`Module.f`), which makes it possible to inadvertently extend `f` instead of defining a new
+local binding called `f`.
+Further, despite the symmetry with the name `export`, `import` defeats the purpose of module
+`export`s, as it is not possible to retrieve a module's exported bindings with `import`
+without knowing what they are already.
+
+On the other side of this, when writing a package, be selective about what you `export`.
+It's friendly to have exported bindings, but unfriendly to export _everything_.
+Unambiguously named bindings which are part of the intended package API should be exported.
+It's also okay to document that a particular function is intentionally not exported and is
+instead intended to be called with its module qualification, e.g. `CSV.read`.
