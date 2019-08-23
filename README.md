@@ -37,7 +37,7 @@ Note that lines containing only comments are not considered empty lines.
 - All files should have [newline](https://en.wikipedia.org/wiki/Newline) character at the end of the file.
 - Use spaces around binary operators (e.g. `x+y` is bad, `x + y` is good). The exceptions are:
   * Within type parameter lists, where no spaces should surround `<:` (only within type parameter lists, though - outside of a type parameter list, spaces should surround `<:` when it is used as a binary operator), and
-  * Around `=` for keyword arguments, as this provides easy visual differentiation between keyword arguments in function signatures and calls that span multiple lines and variable assignments.
+  * Around `=` for keyword arguments and `NamedTuple` arguments. This provides easy visual differentiation between keyword/`NamedTuple` arguments and calls that span multiple lines and variable assignments.
 - Use a single space after commas and semicolons. The exception is within type parameter lists, where no spaces should be added after commas.
 - Do not use extra spaces for unary operators, parentheses, or brackets.
 - Use 4 spaces for indentation; no tabs, ever.
