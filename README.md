@@ -68,7 +68,7 @@ Note that lines containing only comments are not considered empty lines.
 - Do not explicitly name type variables in method signatures when unary `<:` or `>:` would suffice.
 - Type variable bindings should always be enclosed within `{}` brackets when using `where` syntax, e.g. `Vector{Vector{T} where T}` is good, `Vector{Vector{T}} where {T}` is good, `Vector{Vector{T}} where T` is bad.
 - A decimal should never be the last character in numeric literals (e.g. `1.` is bad, `1.0` is good).
-- Use `in` instead of `=` when specifying `for` statement iteration variables (e.g. `for i = 1:5` is bad, `for i in 1:5` is good).
+- Use `in` instead of `=` when specifying `for` statement except possibly for iteration variables (i.e. `for i = 1:5`).
 - If a field type annotation in a struct definition would default to `Any`, explicitly annotate the field with `::Any`.
 - In argument lists, always separate positional arguments from keyword arguments using a semicolon (`;`).
 - In method signatures, only provide names to arguments that are actually referenced in the method body (e.g. `f(x::Number, y) = y` is bad, `f(::Number, y) = y` is good).
