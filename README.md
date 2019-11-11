@@ -72,7 +72,7 @@ Note that lines containing only comments are not considered empty lines.
 - If a field type annotation in a struct definition would default to `Any`, explicitly annotate the field with `::Any`.
 - In argument lists, always separate positional arguments from keyword arguments using a semicolon (`;`).
 - In method signatures, only provide names to arguments that are actually referenced in the method body (e.g. `f(x::Number, y) = y` is bad, `f(::Number, y) = y` is good).
-- Do not use the "pipe" operator (`|>`). It obfuscates code by putting the order of operations backwards, making it difficult to reason about the result of the computation at first glance. `f(x)` is good, `x |> f` is bad. When the number of function calls is sufficiently large such that nesting them becomes difficult to read, rather than repeatedly piping the results of calculations to the next function using repeated `|>` calls, favor using intermediate variables. (This also permits easier piecewise evaluation of the expression in the REPL.)
+- Do not use the "pipe" operator (`|>`). The primary use case for `|>` is to break up nested function calls. For this scenario, one should instead favor assigning intermediary results to well-named variables. This makes code easier to read, debug, and piecewise evaluate in the REPL. Another reason to avoid `|>` is that it clutters stacktraces.
 
 ## Programming Guidelines
 
