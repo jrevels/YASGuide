@@ -73,6 +73,7 @@ Note that lines containing only comments are not considered empty lines.
 - In argument lists, always separate positional arguments from keyword arguments using a semicolon (`;`).
 - In method signatures, only provide names to arguments that are actually referenced in the method body (e.g. `f(x::Number, y) = y` is bad, `f(::Number, y) = y` is good).
 - Do not use the "pipe" operator (`|>`). The primary use case for `|>` is to break up nested function calls. For this scenario, one should instead favor assigning intermediary results to well-named variables. This makes code easier to read, debug, and piecewise evaluate in the REPL. Another reason to avoid `|>` is that it clutters stacktraces.
+- Qualified macrocalls should directly prefix the macro name - not the qualifying namespace - with `@` (e.g. `@Module.macro_name` is bad, `Module.@macro_name` is good).
 
 ## Programming Guidelines
 
