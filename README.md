@@ -82,7 +82,16 @@ Note that lines containing only comments are not considered empty lines.
 - The `return` keyword should always be omitted from return statements within short-form method definitions (`f(...) = ...`). The `return` keyword should never be omitted from return statements within any other context (`function ... end`, `macro ... end`, etc.).
 - If a function does not have a clearly appropriate return value, then explicitly return `nothing`.
 - If a function definition is not at top-level, then it should be an anonymous function rather than a named function. This lessens confusion about whether the function is properly overloadable.
-- When overloading a function from another module, the function name should be qualified with its module (e.g. `imported_function(...) = ...` is bad, `ParentModule.imported_function(...) = ...` is good).
-- Modules should only be loaded with `using`, never `import`. This helps prevent methods from being accidentally extended without qualification (whereas `import Module: f` allows `f` to be extended without qualification).
+- When overloading a function from another module, the function name should be qualified with its module.
+    - Good: `ParentModule.imported_function(...) = ...`
+    - Bad: `imported_function(...) = ...`
+- When loading an entire module, use `import ModuleName` or `using ModuleName: ModuleName`, but never `using ModuleName`. Code that uses `using ModuleName` will start breaking in the future when another dependency starts to export one of the same names as `ModuleName`.
+    - Good: `import Foo`
+    - Good: `using Foo: Foo`
+    - Bad: `using Foo`
+- When loading one or more specific names from a module, use `using ModuleName: f` instead of `import ModuleName: f`. This helps prevent methods from being accidentally extended without qualification (whereas `import Module: f` allows `f` to be extended without qualification).
+    - Good: `using Foo: bar`
+    - Good: `import Foo`
+    - Bad: `import Foo: bar`
 - It's friendly to selectively `export` module bindings, but unfriendly to `export` *everything*. A module should `export` unambiguously named bindings that are part of the module's intended API. It's also okay to not export (but document) functions that are intended to be called in qualified form, e.g. `CSV.read`.
 - Do not use `@assert` statements for any error handling/input checking/etc. that should occur even in optimized builds. Per `@assert`'s documentation: "An assert might be disabled at various optimization levels."
